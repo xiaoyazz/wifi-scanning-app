@@ -8,18 +8,24 @@ import androidx.room.PrimaryKey
 data class ScanResultsEntity(
 
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
+    var id: Int = 0,
+
+    @ColumnInfo(name = "buildingName")
+    var buildingName: String? = null,
+
+    @ColumnInfo(name = "floorNumber")
+    var floorNumber: String? = null,
 
     @ColumnInfo(name = "SSID")
-    var ssid: String,
+    var ssid: String? = null,
 
     @ColumnInfo(name = "CAPABILITIES")
-    var capabilities: String,
+    var capabilities: String? = null,
 
     @ColumnInfo(name = "BSSID")
-    var bssid: String,
+    var bssid: String ? = null,
 
     @ColumnInfo(name = "signalStrength")
-    var signalStrength: String
+    var signalStrength: Int? = null
 
 )

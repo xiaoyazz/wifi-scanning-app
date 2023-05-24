@@ -5,15 +5,29 @@ import androidx.room.*
 @Dao
 interface ScanResultsDao {
 
-    @Query("SELECT * FROM scanResults")
-    fun getAll(): List<ScanResultsEntity>
+    @Query("SELECT * FROM scanResults WHERE buildingName = :buildingName AND floorNumber = :floorNumber")
+    fun getResultsByBuildingAndFloor(buildingName: String, floorNumber: String): List<ScanResultsEntity>
 
-    @Delete
-    fun delete(scanResults: ScanResultsEntity)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAllInternal(scanResults: List<ScanResultsEntity>)
 
+    @Query("DELETE FROM scanResults")
+    fun deleteAll()
     // Method to write data to a CSV file
     @Transaction
-    @Query("SELECT * FROM scanResults")
-    fun writeScanResultsToCsv(): List<ScanResultsEntity>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(scanResults: List<ScanResultsEntity>) {
+        for (scanResult in scanResults) {
+            val existingResults = getResultsByBuildingAndFloor(scanResult.buildingName?:"",
+                scanResult.floorNumber?:""
+            )
+            if (existingResults.isNotEmpty()) {
+                // Remove existing results on the same floor in the same building
+                deleteAll()
+            }
+        }
+        // Insert the new scan results
+        insertAllInternal(scanResults)
+    }
 
 }
