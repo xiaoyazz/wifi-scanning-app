@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1032195602959",
+    "project_id": "wifi-scanning-app",
+    "storage_bucket": "wifi-scanning-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032195602959:android:c5e01dca72d91faa43817a",
+        "android_client_info": {
+          "package_name": "sheridan.telus.wifi_scanning_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU9XzQjg-Xt3_IX5zgJwtorplEf5YArV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

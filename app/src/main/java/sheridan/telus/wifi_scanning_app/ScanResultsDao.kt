@@ -29,5 +29,4 @@ interface ScanResultsDao {
         // Insert the new scan results
         insertAllInternal(scanResults)
     }
-
 }
