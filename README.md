@@ -1,4 +1,4 @@
-# wifi-scanning-app
+# wifi Scanner
 
 - Scan Wifi APs
 - Save data in Room database
